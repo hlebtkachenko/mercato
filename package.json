@@ -99,7 +99,7 @@
     "next": "16.2.6",
     "pdfjs-dist": "^5.4.149",
     "pg": "8.21.0",
-    "react": "19.2.5",
+    "react": "19.2.7",
     "react-big-calendar": "^1.19.4",
     "react-dom": "19.2.5",
     "react-email": "^6.0.0",
