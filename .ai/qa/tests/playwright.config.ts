@@ -1,23 +1,25 @@
-import { defineConfig } from '@playwright/test';
-import path from 'node:path';
-import { fileURLToPath } from 'node:url';
-import { discoverIntegrationSpecFiles } from '@open-mercato/cli/lib/testing/integration-discovery';
+import { defineConfig } from '@playwright/test'
+import path from 'node:path'
+import { fileURLToPath } from 'node:url'
+import { discoverIntegrationSpecFiles } from '@open-mercato/cli/lib/testing/integration-discovery'
 
-const captureScreenshots = process.env.PW_CAPTURE_SCREENSHOTS === '1';
-const isGitHubActions = process.env.GITHUB_ACTIONS === 'true';
-const __dirname = path.dirname(fileURLToPath(import.meta.url));
-const projectRoot = path.resolve(__dirname, '..', '..', '..');
-const qaTestResultsRoot = path.join(projectRoot, '.ai', 'qa', 'test-results');
-const normalizePath = (value: string) => value.split(path.sep).join('/');
+const captureScreenshots = process.env.PW_CAPTURE_SCREENSHOTS === '1'
+const isGitHubActions = process.env.GITHUB_ACTIONS === 'true'
+// Standalone apps generated from this template declare `"type": "module"`,
+// so the CommonJS `__dirname` is undefined when Playwright loads this config
+// under the Node ESM loader. Reconstruct it from `import.meta.url`.
+const __dirname = path.dirname(fileURLToPath(import.meta.url))
+const projectRoot = path.resolve(__dirname, '..', '..', '..')
+const qaTestResultsRoot = path.join(projectRoot, '.ai', 'qa', 'test-results')
+const normalizePath = (value: string) => value.split(path.sep).join('/')
 const STATIC_TEST_IGNORES = [
   `${normalizePath(path.join(projectRoot, '.claude'))}/**`,
   `${normalizePath(path.join(projectRoot, '.codex'))}/**`,
-];
-// `.ai/qa/tests` is retained for the shared Playwright config only.
-// Executable specs must live in module-local `__integration__` folders.
-const disabledLegacyIntegrationRoot = path.join(projectRoot, '.ai', 'qa', 'tests', '__legacy_disabled__');
-const discoveredSpecs = discoverIntegrationSpecFiles(projectRoot, disabledLegacyIntegrationRoot);
-const discoveredSpecPaths = discoveredSpecs.map((entry) => entry.path);
+  `${normalizePath(path.join(projectRoot, '.cursor'))}/**`,
+  `${normalizePath(path.join(projectRoot, 'node_modules'))}/**`,
+]
+const discoveredSpecs = discoverIntegrationSpecFiles(projectRoot, path.join(projectRoot, '.ai', 'qa', 'tests'))
+const discoveredSpecPaths = discoveredSpecs.map((entry) => entry.path)
 
 export default defineConfig({
   testDir: projectRoot,
@@ -50,4 +52,4 @@ export default defineConfig({
         ['html', { outputFolder: path.join(qaTestResultsRoot, 'html'), open: 'never' }],
       ],
   outputDir: path.join(qaTestResultsRoot, 'artifacts'),
-});
+})
