@@ -9,7 +9,7 @@ A **standalone [Open Mercato](https://github.com/open-mercato/open-mercato) app*
 It consumes the framework as `@open-mercato/*` **npm packages** (zero-modification core), so tracking upstream releases is a version bump, not a fork merge. Your code lives under `src/`; core stays on npm.
 
 - **Repo:** `github.com/hlebtkachenko/mercato`
-- **Branch:** `hlebtkachenko/open-mercato-app-scaffold`
+- **Branch:** `hlebtkachenko/open-mercato-app-scaffold` (merged to `main`)
 - **Scaffolded with:** `create-mercato-app` (classic preset)
 
 ## Current status
@@ -21,7 +21,8 @@ It consumes the framework as `@open-mercato/*` **npm packages** (zero-modificati
 | `yarn typecheck` | Green |
 | `yarn test` | Green (harness fixed — see Fixes) |
 | Infra | docker-compose (Postgres pgvector / Redis / Meilisearch), on-demand |
-| Git | 4 commits pushed to the branch |
+| CI | Green — `generate` + typecheck + test + gitleaks on every push/PR |
+| Git | Pushed to the branch **and `main`** |
 
 ## Decisions
 
@@ -109,7 +110,10 @@ Tests for your modules go under `src/modules/<id>/**/__tests__/*.test.ts` and ru
 - `2dc0882` feat: scaffold standalone Open Mercato app
 - `befc8e1` chore: add Claude Code agentic tooling
 - `fe1321c` feat: on-demand local launcher
-- (this) fix: working jest test harness + state.md
+- `10e23a4` fix: working jest test harness + state.md
+- `b4ed63d` chore: harden .gitignore against secret leaks
+- `dfbf8c2` chore: add README, CI, secret scanning, Dependabot, editor config
+- (+ this) docs: update state.md and merge to main
 
 ## Next
 
