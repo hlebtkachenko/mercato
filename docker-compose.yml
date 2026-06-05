@@ -1,7 +1,7 @@
 services:
   postgres:
     image: pgvector/pgvector:pg17-trixie
-    restart: unless-stopped
+    restart: "no"
     environment:
       POSTGRES_USER: ${POSTGRES_USER:-postgres}
       POSTGRES_PASSWORD: ${POSTGRES_PASSWORD:-postgres}
@@ -34,7 +34,7 @@ services:
 
   meilisearch:
     image: getmeili/meilisearch:v1.11
-    restart: unless-stopped
+    restart: "no"
     environment:
       MEILI_ENV: development
       MEILI_MASTER_KEY: ${MEILISEARCH_MASTER_KEY:-meilisearch-dev-key}
