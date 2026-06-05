@@ -79,6 +79,13 @@ CLAUDE.md / AGENTS.md      # AI-agent guidance
 - **On-demand launcher** + `restart: "no"` so nothing runs 24/7.
 - **Test harness**: the scaffold shipped a `test` script (`jest --config jest.config.cjs`) but **no config and no test files** (the generator strips `__tests__`), so `yarn test` crashed. Added a self-contained `jest.config.cjs` + `scripts/jest-mikroorm-transformer.cjs` + `jest.setup.ts` / `jest.dom.setup.ts` (adapted from the monorepo: `@open-mercato/*` resolve from `node_modules`), plus a smoke test. `yarn test` is now green.
 
+## Repo quality / CI
+
+- **`.gitignore` hardened** — ignores every `.env*`, plus `*.key`/`*.p12`/`*.pfx`/`id_rsa*`.
+- **CI** (`.github/workflows/ci.yml`) — `yarn generate` + typecheck + test, and gitleaks secret scan, on every push/PR.
+- **Dependabot** (`.github/dependabot.yml`) — weekly npm + github-actions updates; `@open-mercato/*` grouped; majors held for manual review.
+- **README.md**, **.editorconfig**, **.nvmrc** (Node 24) added.
+
 ## Keeping current with upstream
 
 ```bash
