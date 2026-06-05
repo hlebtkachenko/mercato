@@ -110,7 +110,7 @@
     "semver": "^7.7.4",
     "svix": "^1.92.2",
     "tailwind-merge": "^3.5.0",
-    "zod": "4.3.6"
+    "zod": "4.4.3"
   },
   "devDependencies": {
     "@playwright/test": "^1.58.2",
@@ -141,7 +141,7 @@
   "resolutions": {
     "lodash": "4.18.1",
     "lodash-es": "4.18.1",
-    "zod": "4.3.6"
+    "zod": "4.4.3"
   },
   "imports": {
     "#generated/entities.ids.generated": {
