@@ -124,7 +124,7 @@
     "@types/react-dom": "^19.2.3",
     "cross-spawn": "^7.0.6",
     "eslint": "^10.2.1",
-    "eslint-config-next": "16.2.4",
+    "eslint-config-next": "16.2.7",
     "jest": "^30.3.0",
     "tailwindcss": "^4.2.2",
     "ts-jest": "^29.4.9",
