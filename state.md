@@ -83,7 +83,7 @@ CLAUDE.md / AGENTS.md      # AI-agent guidance
 ## Repo quality / CI
 
 - **`.gitignore` hardened** — ignores every `.env*`, plus `*.key`/`*.p12`/`*.pfx`/`id_rsa*`.
-- **CI** (`.github/workflows/ci.yml`) — `yarn generate` + typecheck + test, and gitleaks secret scan, on every push/PR.
+- **CI** (`.github/workflows/ci.yml`) — `yarn generate` + typecheck + test, and gitleaks secret scan. Runs on PRs, `main` pushes, manual `workflow_dispatch`, and merge queue. Yarn download cache + cancel-in-progress for fast runs; least-privilege `permissions` + per-job `timeout-minutes`; step summaries for agent-readable results.
 - **Dependabot** (`.github/dependabot.yml`) — weekly npm + github-actions updates; `@open-mercato/*` grouped; majors held for manual review.
 - **README.md**, **.editorconfig**, **.nvmrc** (Node 24) added.
 - **`main` branch protection** (ruleset `protect-main`) — every change must land via a PR with `typecheck + test` + `gitleaks` green; direct pushes, force-pushes, and branch deletion are blocked (no bypass).

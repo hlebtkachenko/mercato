@@ -4,22 +4,41 @@ on:
   push:
     branches: ["main"]
   pull_request:
+  workflow_dispatch:   # manual / agent-triggered runs (gh workflow run CI)
+  merge_group:         # merge-queue ready
 
+# Least privilege by default; jobs widen only what they need.
+permissions:
+  contents: read
+
+# New pushes to the same ref cancel in-flight runs -> faster feedback, less waste.
 concurrency:
-  group: ci-${{ github.ref }}
+  group: ci-${{ github.workflow }}-${{ github.ref }}
   cancel-in-progress: true
 
 jobs:
   build:
     name: typecheck + test
     runs-on: ubuntu-latest
+    timeout-minutes: 20
     steps:
       - uses: actions/checkout@v6
       - uses: actions/setup-node@v6
         with:
           node-version: 24
-      - run: corepack enable
-      - name: Install dependencies
+      - name: Enable Corepack (Yarn 4)
+        run: corepack enable
+      - name: Resolve Yarn cache dir
+        id: yarn-cache
+        run: echo "dir=$(yarn config get cacheFolder)" >> "$GITHUB_OUTPUT"
+      - name: Cache Yarn downloads
+        uses: actions/cache@v4
+        with:
+          path: ${{ steps.yarn-cache.outputs.dir }}
+          key: ${{ runner.os }}-node24-yarn-${{ hashFiles('yarn.lock') }}
+          restore-keys: |
+            ${{ runner.os }}-node24-yarn-
+      - name: Install
         run: yarn install --immutable
       - name: Generate framework artifacts
         run: yarn generate
@@ -27,10 +46,14 @@ jobs:
         run: yarn typecheck
       - name: Test
         run: yarn test
+      - name: Summary
+        if: always()
+        run: echo "typecheck + test → **${{ job.status }}**" >> "$GITHUB_STEP_SUMMARY"
 
   secret-scan:
     name: gitleaks
     runs-on: ubuntu-latest
+    timeout-minutes: 10
     permissions:
       contents: read
       pull-requests: read
