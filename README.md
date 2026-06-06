@@ -64,12 +64,22 @@ yarn generate
 yarn db:migrate
 ```
 
+## Contributing
+
+`main` is protected — changes land via PR only (no direct pushes). CI must pass (`typecheck + test` + `gitleaks`) before merge.
+
+```bash
+git checkout -b <change>
+git push origin <change>
+gh pr create --base main
+```
+
 ## Security notes
 
 - Real secrets live only in `.env` (gitignored). `.env.example` holds placeholders.
 - This app uses a real `TENANT_DATA_ENCRYPTION_KEY` (the dev fallback is disabled).
 - **Before any production deploy:** the `docker-compose.fullapp*.yml` files ship dev defaults (`NODE_ENV=development`, `DEMO_MODE=true`, `JWT_SECRET=JWT`, dev encryption/Meilisearch keys, `superadmin` password `password`). Override every secret env var, set `NODE_ENV=production`, rotate the seeded `@acme.com` credentials, and prefer a Vault/KMS-backed encryption key.
-- CI runs typecheck, tests, and gitleaks secret scanning on every push/PR.
+- CI runs typecheck, tests, and gitleaks secret scanning on PRs and `main` (dependency-cached; also runnable manually via `gh workflow run CI`).
 
 ## License
 
