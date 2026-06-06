@@ -21,8 +21,8 @@ It consumes the framework as `@open-mercato/*` **npm packages** (zero-modificati
 | `yarn typecheck` | Green |
 | `yarn test` | Green (harness fixed — see Fixes) |
 | Infra | docker-compose (Postgres pgvector / Redis / Meilisearch), on-demand |
-| CI | Green — `generate` + typecheck + test + gitleaks on every push/PR |
-| Git | Pushed to the branch **and `main`** |
+| CI | Green — typecheck + test + gitleaks; dependency-cached; PR / `main` / `workflow_dispatch` / merge-queue triggers |
+| Git | `main` = default + protected (PR-only); branch synced; 0 open PRs |
 
 ## Decisions
 
@@ -117,15 +117,17 @@ yarn db:migrate
 
 Tests for your modules go under `src/modules/<id>/**/__tests__/*.test.ts` and run with `yarn test`.
 
-## Commits
+## History
 
-- `2dc0882` feat: scaffold standalone Open Mercato app
-- `befc8e1` chore: add Claude Code agentic tooling
-- `fe1321c` feat: on-demand local launcher
-- `10e23a4` fix: working jest test harness + state.md
-- `b4ed63d` chore: harden .gitignore against secret leaks
-- `dfbf8c2` chore: add README, CI, secret scanning, Dependabot, editor config
-- (+ this) docs: update state.md and merge to main
+Full history is in `git log` and the repo's PRs. Milestones:
+
+1. Scaffold standalone app (classic preset, all modules kept)
+2. Ports off standard values + real tenant encryption key + Claude Code agentic tooling
+3. On-demand launcher (open/close like a desktop app)
+4. Working jest test harness (scaffold shipped the script but no config/tests)
+5. Security hardening — `.gitignore`, gitleaks CI, `main` branch protection
+6. README / CI / Dependabot / editorconfig added; all Dependabot updates resolved
+7. CI optimized — dependency cache + agent triggers (`workflow_dispatch`, merge queue)
 
 ## Next
 
