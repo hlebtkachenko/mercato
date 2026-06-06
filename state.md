@@ -86,6 +86,18 @@ CLAUDE.md / AGENTS.md      # AI-agent guidance
 - **CI** (`.github/workflows/ci.yml`) — `yarn generate` + typecheck + test, and gitleaks secret scan, on every push/PR.
 - **Dependabot** (`.github/dependabot.yml`) — weekly npm + github-actions updates; `@open-mercato/*` grouped; majors held for manual review.
 - **README.md**, **.editorconfig**, **.nvmrc** (Node 24) added.
+- **`main` branch protection** (ruleset `protect-main`) — every change must land via a PR with `typecheck + test` + `gitleaks` green; direct pushes, force-pushes, and branch deletion are blocked (no bypass).
+
+## Contributing flow
+
+`main` is PR-only:
+
+```bash
+git checkout -b <change>
+git push origin <change>
+gh pr create --base main
+# CI green (typecheck + test + gitleaks) -> merge
+```
 
 ## Keeping current with upstream
 
