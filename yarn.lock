@@ -1748,7 +1748,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@mikro-orm/decorators@npm:^7.0.13, @mikro-orm/decorators@npm:^7.1.1":
+"@mikro-orm/decorators@npm:^7.1.1":
   version: 7.1.3
   resolution: "@mikro-orm/decorators@npm:7.1.3"
   peerDependencies:
@@ -1758,6 +1758,19 @@ __metadata:
     reflect-metadata:
       optional: true
   checksum: 10c0/daaebb7058704574e6eeb1a825f3f7db6c884e7788a8337234b13327d1a6b9ecc33dc6b17f12c0c23d82e86c4f8bd4bb46bc73218c347b0033e3ff8ebe1f89b3
+  languageName: node
+  linkType: hard
+
+"@mikro-orm/decorators@npm:^7.1.4":
+  version: 7.1.4
+  resolution: "@mikro-orm/decorators@npm:7.1.4"
+  peerDependencies:
+    "@mikro-orm/core": 7.1.4
+    reflect-metadata: ^0.1.0 || ^0.2.0
+  peerDependenciesMeta:
+    reflect-metadata:
+      optional: true
+  checksum: 10c0/2cc12c753536a9716b563159b65b93decd195316cf3ec9374c0613f5b8b514e73bad68a80f64fa3375536f109ce215254f869811f33f3d3cdcc34076268b7846
   languageName: node
   linkType: hard
 
@@ -11159,7 +11172,7 @@ __metadata:
     "@dnd-kit/sortable": "npm:^10.0.0"
     "@dnd-kit/utilities": "npm:^3.2.2"
     "@mikro-orm/core": "npm:^7.0.13"
-    "@mikro-orm/decorators": "npm:^7.0.13"
+    "@mikro-orm/decorators": "npm:^7.1.4"
     "@mikro-orm/migrations": "npm:^7.0.13"
     "@mikro-orm/postgresql": "npm:^7.0.13"
     "@modelcontextprotocol/sdk": "npm:^1.26.0"

@@ -41,7 +41,7 @@
     "@dnd-kit/sortable": "^10.0.0",
     "@dnd-kit/utilities": "^3.2.2",
     "@mikro-orm/core": "^7.0.13",
-    "@mikro-orm/decorators": "^7.0.13",
+    "@mikro-orm/decorators": "^7.1.4",
     "@mikro-orm/migrations": "^7.0.13",
     "@mikro-orm/postgresql": "^7.0.13",
     "@modelcontextprotocol/sdk": "^1.26.0",
