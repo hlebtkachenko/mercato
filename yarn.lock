@@ -41,7 +41,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@ai-sdk/cohere@npm:^3.0.36, @ai-sdk/cohere@npm:^3.0.4":
+"@ai-sdk/cohere@npm:^3.0.36":
   version: 3.0.36
   resolution: "@ai-sdk/cohere@npm:3.0.36"
   dependencies:
@@ -50,6 +50,18 @@ __metadata:
   peerDependencies:
     zod: ^3.25.76 || ^4.1.8
   checksum: 10c0/b3da6143a613e6f3a5a7f232a5cb4c65452519ef608c7f7a395dfd08742ebd5029b0609f2abf76b5aec931879eea7d57941de3531c19dbb4ce23e40ee7f72ade
+  languageName: node
+  linkType: hard
+
+"@ai-sdk/cohere@npm:^3.0.38":
+  version: 3.0.38
+  resolution: "@ai-sdk/cohere@npm:3.0.38"
+  dependencies:
+    "@ai-sdk/provider": "npm:3.0.10"
+    "@ai-sdk/provider-utils": "npm:4.0.29"
+  peerDependencies:
+    zod: ^3.25.76 || ^4.1.8
+  checksum: 10c0/96cc8d43044c8fd31efacd34a41e2a334c9509fd2a9906b21850a3a84a07f45e8fc8dba0d5b887c48ce3bf83f1f7f1a6541dcc2adff8602a9398c51e7b0ae2bb
   languageName: node
   linkType: hard
 
@@ -137,6 +149,19 @@ __metadata:
   peerDependencies:
     zod: ^3.25.76 || ^4.1.8
   checksum: 10c0/2202dedcbe8f58883ef37425111392c6b5b5c2f85dfbbd11b13173e9d349da3d977ba610586c4b5412720e07b09f63ba0e88dbc6e21f043441a67f6d51225020
+  languageName: node
+  linkType: hard
+
+"@ai-sdk/provider-utils@npm:4.0.29":
+  version: 4.0.29
+  resolution: "@ai-sdk/provider-utils@npm:4.0.29"
+  dependencies:
+    "@ai-sdk/provider": "npm:3.0.10"
+    "@standard-schema/spec": "npm:^1.1.0"
+    eventsource-parser: "npm:^3.0.8"
+  peerDependencies:
+    zod: ^3.25.76 || ^4.1.8
+  checksum: 10c0/abc27720a8063d18598985525b22d8356eab21cf5ae71d39cf1acc23870e4f4155c1e4a594df6c7cd1459dbb611a91a32bb5b70e8a0c8c5eef5ee3bf6641aa68
   languageName: node
   linkType: hard
 
@@ -11152,7 +11177,7 @@ __metadata:
   dependencies:
     "@ai-sdk/amazon-bedrock": "npm:^4.0.8"
     "@ai-sdk/anthropic": "npm:^3.0.12"
-    "@ai-sdk/cohere": "npm:^3.0.4"
+    "@ai-sdk/cohere": "npm:^3.0.38"
     "@ai-sdk/google": "npm:^2.0.0"
     "@ai-sdk/openai": "npm:^3.0.53"
     "@dnd-kit/core": "npm:^6.3.1"
