@@ -32,7 +32,7 @@ jobs:
         id: yarn-cache
         run: echo "dir=$(yarn config get cacheFolder)" >> "$GITHUB_OUTPUT"
       - name: Cache Yarn downloads
-        uses: actions/cache@v4
+        uses: actions/cache@v5
         with:
           path: ${{ steps.yarn-cache.outputs.dir }}
           key: ${{ runner.os }}-node24-yarn-${{ hashFiles('yarn.lock') }}
